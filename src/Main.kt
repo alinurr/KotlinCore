@@ -24,4 +24,22 @@ fun main(){
     print("Введите модель автомобиля: ")
     val modelInput = readLine() ?: "Неизвестная модель"
 
+    print("Введите цену автомобиля (тенге): ")
+    val priceString = readLine() ?: "0"
+    val price = priceString.toInt()
+
+    print("Введите год выпуска автомобиля: ")
+    val yearString = readLine() ?: "2000"
+    val year = yearString.toInt()
+
+    println("Вы разместили объявление: ")
+
+    val text = """
+    |-------------------------
+    |Модель: $modelInput
+    |Цена: $price $CURRENCY
+    |Год: $year
+    """.trimMargin()
+    println(text)
+
 }
