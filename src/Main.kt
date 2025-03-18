@@ -3,7 +3,7 @@ package src
 const val APP_VERSION = "1.0"
 const val CURRENCY = "KZT"
 
-fun main(){
+fun main() {
     println("Добро пожаловать в KolesaMini")
     //const val APP_MODEL = 0;
 
@@ -21,28 +21,73 @@ fun main(){
 
     //carModel = "Toyota Carina"
 
-    print("Введите модель автомобиля: ")
-    var modelInput = readLine()
-    if (modelInput.equals("")){
-        modelInput = "Неизвестная модель"
+    println("Сколько хотите ввести объявлений?")
+    val adNums = readLine()?.toInt()
+
+//    for (i in 1..adNums!!){
+//        print("Введите модель автомобиля: ")
+//        val modelInput = getModelInfo()
+//
+//        print("Введите цену автомобиля (тенге): ")
+//        val price = getPriceInfo()
+//
+//        print("Введите год выпуска автомобиля: ")
+//        val year = getYearInfo()
+//
+//        println("Вы разместили объявление: ")
+//        printFullCarInfo(modelInput, price, year)
+//    }
+
+    while (true) {
+        println("Введите 0 для вызова: ")
+        println("Введите 1 для выхода")
+        var userEnter = readLine()?.toInt()
+
+        if (userEnter == 1) {
+            break
+        }
+        print("Введите модель автомобиля: ")
+        val modelInput = getModelInfo()
+
+        print("Введите цену автомобиля (тенге): ")
+        val price = getPriceInfo()
+
+        print("Введите год выпуска автомобиля: ")
+        val year = getYearInfo()
+
+        println("Вы разместили объявление : ")
+        printFullCarInfo(modelInput, price, year)
     }
 
-    print("Введите цену автомобиля (тенге): ")
+}
+
+fun getModelInfo(): String? {
+    var modelInput = readLine()
+    if (modelInput.equals("")) {
+        modelInput = "Неизвестная модель"
+    }
+    return modelInput
+}
+
+fun getPriceInfo(): Int? {
     var priceString = readLine()
-    if (priceString.equals("")){
+    if (priceString.equals("")) {
         priceString = "0"
     }
     val price = priceString?.toInt()
+    return price
+}
 
-    print("Введите год выпуска автомобиля: ")
+fun getYearInfo(): Int? {
     var yearString = readLine()
-    if (yearString.equals("")){
-        yearString = "2000"
+    if (yearString.equals("")) {
+        yearString = "Неизвестный год"
     }
     val year = yearString?.toInt()
+    return year
+}
 
-    println("Вы разместили объявление: ")
-
+fun printFullCarInfo(modelInput: String?, price: Int?, year: Int?) {
     val text = """
     |-------------------------
     |Модель: $modelInput
@@ -50,5 +95,4 @@ fun main(){
     |Год: $year
     """.trimMargin()
     println(text)
-
 }
