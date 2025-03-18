@@ -21,10 +21,10 @@ fun main() {
 
     //carModel = "Toyota Carina"
 
-    print("Сколько хотите ввести объявлений? ")
-    val adNums = readLine()?.toInt()
-
-//    for (i in 1..adNums!!){
+//    print("Сколько хотите ввести объявлений? ")
+//    val adCount = readLine()?.toInt()
+//
+//    for (i in 1..adCount!!){
 //        print("Введите модель автомобиля: ")
 //        val modelInput = getModelInfo()
 //
@@ -59,7 +59,7 @@ fun main() {
 //        printFullCarInfo(modelInput, price, year)
 //    }
     val carInfo = getCarInfo()
-    printFullCarInfo(carInfo,)
+    print(carInfo)
 }
 
 fun getModelInfo(): String? {
@@ -91,11 +91,11 @@ fun getYearInfo(): Int? {
 
 fun getCarInfo(): String {
     print("Введите модель автомобиля: ")
-    val model = readLine() ?: "Неизвестная модель"
+    val model = readlnOrNull() ?: "Неизвестная модель"
 
     print("Введите цену автомобиля: ")
-    val priceInput = readLine() ?: "0"
-    val price = priceInput.toInt()
+    val priceInput = readLine()
+    val price = priceInput!!.toInt()
 
 //    if (price < 0) {
 //        println("Цена не может быть отрицательной! Сбросим в 0.")
@@ -103,9 +103,14 @@ fun getCarInfo(): String {
 //    } else if (price > 10_000_000) {
 //        println("Очень высокая цена! Вы уверены?")
 //    }
-    when {
-        price < 0 -> "Цена не может быть отрицательной! Сбросим в 0."
-        price > 10_000_000 -> "Очень высокая цена! Вы уверены?"
+    val priceException = when {
+        price < 0 -> {
+            println("Цена не может быть отрицательной! Сбросим в 0.")
+            0
+        }
+        price > 10_000_000 -> {
+            "Очень высокая цена! Вы уверены?"
+        }
         else -> "Цена подходящая"
     }
 
@@ -114,9 +119,10 @@ fun getCarInfo(): String {
 //    }
 //    return "Модель = $model, Цена = $price $CURRENCY"
 
-    when{
-        model.equals("Lexus", ignoreCase = true) && price < 5_000_000 -> "Для Lexus обычно ожидается цена от 5_000_000!"
-        model.equals("VAZ", ignoreCase = true) && price > 2_000_000 -> "Для VAZ обычно ожидается цена ниже 2_000_000!"
+    val priceAndModelException = when{
+        model.equals("Lexus", ignoreCase = true) && price < 5_000_000 -> println("Для Lexus обычно ожидается цена от 5_000_000!")
+        model.equals("VAZ", ignoreCase = true) && price > 2_000_000 -> println("Для VAZ обычно ожидается цена ниже 2_000_000!")
+        else -> "Все правильно"
     }
     return "Модель = $model, Цена = $price $CURRENCY"
 }
