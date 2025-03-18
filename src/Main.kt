@@ -21,7 +21,7 @@ fun main() {
 
     //carModel = "Toyota Carina"
 
-    println("Сколько хотите ввести объявлений?")
+    print("Сколько хотите ввести объявлений? ")
     val adNums = readLine()?.toInt()
 
 //    for (i in 1..adNums!!){
@@ -37,10 +37,9 @@ fun main() {
 //        println("Вы разместили объявление: ")
 //        printFullCarInfo(modelInput, price, year)
 //    }
-
+    var adNum = 0;
     while (true) {
-        println("Введите 0 для вызова: ")
-        println("Введите 1 для выхода")
+        print("Введите 0 для вызова или 1 для выхода: ")
         var userEnter = readLine()?.toInt()
 
         if (userEnter == 1) {
@@ -55,7 +54,8 @@ fun main() {
         print("Введите год выпуска автомобиля: ")
         val year = getYearInfo()
 
-        println("Вы разместили объявление : ")
+        adNum++
+        println("Вы разместили объявление #$adNum: ")
         printFullCarInfo(modelInput, price, year)
     }
 
