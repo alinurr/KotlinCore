@@ -60,6 +60,9 @@ fun main() {
 //    }
     val carInfo = getCarInfo()
     print(carInfo)
+
+    val car = CarAd()
+    println(car.year)
 }
 
 fun getModelInfo(): String? {
