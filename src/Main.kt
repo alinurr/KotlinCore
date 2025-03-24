@@ -4,20 +4,20 @@ const val APP_VERSION = "1.0"
 const val CURRENCY = "KZT"
 
 fun main() {
-    println("Добро пожаловать в KolesaMini")
+    //println("Добро пожаловать в KolesaMini")
     //const val APP_MODEL = 0;
 
-    val serviceName = "Kolesa Mini"
-    var currentUser = "Guest"
-    var carPrice = 3_000_000
-    val carModel = "Toyota Camry"
-
-
-    println("Текущий пользователь: $currentUser")
-    println("Автомобиль по умолчанию: $carModel, цена: $carPrice $CURRENCY")
-
-    currentUser = "dealer_ivan"
-    println("Теперь ползователь $currentUser")
+//    val serviceName = "Kolesa Mini"
+//    var currentUser = "Guest"
+//    var carPrice = 3_000_000
+//    val carModel = "Toyota Camry"
+//
+//
+//    println("Текущий пользователь: $currentUser")
+//    println("Автомобиль по умолчанию: $carModel, цена: $carPrice $CURRENCY")
+//
+//    currentUser = "dealer_ivan"
+//    println("Теперь ползователь $currentUser")
 
     //carModel = "Toyota Carina"
 
@@ -58,11 +58,27 @@ fun main() {
 //        println("Вы разместили объявление #$adNum: ")
 //        printFullCarInfo(modelInput, price, year)
 //    }
-    val carInfo = getCarInfo()
-    print(carInfo)
+//    val carInfo = getCarInfo()
+//    print(carInfo)
 
-    val car = CarAd()
-    println(car.year)
+    println("KolesaMini: OOП версия")
+
+    val ads: Array<BaseAd?> = arrayOfNulls(5)
+    ads[0] = CarAd("Toyota", 1980, -100).apply { city = " " }
+    ads[1] = CarAd("Honda")
+    (ads[1] as CarAd).price = 1_500_000
+    ads[2] = MotorcycleAd("Yamaha", 1975, 600)
+    ads[3] = null
+    ads[4] = MotorcycleAd("Ducati")
+
+    for (i in ads.indices){
+        val ad = ads[i]
+        if (ad == null){
+            println("$i) Нет объявления.")
+        }else{
+            println("$i) " + ad.getInfo())
+        }
+    }
 }
 
 fun getModelInfo(): String? {

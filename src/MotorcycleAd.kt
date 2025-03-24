@@ -6,8 +6,19 @@ open class MotorcycleAd(
     val engineVolume: Int
 ) : BaseAd(model, year){
 
+    init {
+        if (this.year >= 1980){
+            println("MotorAd init: год больше 1980 => ставим 1980")
+            this.year = 1980
+        }
+    }
+
+    constructor(model: String) : this(model, 2021, 500){
+        println("Вторичный конcтруктор MotorAd (model=$model, year=2021, engineVolume=500)")
+    }
+
     override var city: String = super.city
-        get() {
+        get() {//field - это специальное скрытое свойство, которое хранит текущее значение.
             return field
         }
         set(value) {
