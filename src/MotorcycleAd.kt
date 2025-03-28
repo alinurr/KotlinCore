@@ -3,8 +3,9 @@ package src
 open class MotorcycleAd(
     model: String,
     year: Int,
+    city: String,
     val engineVolume: Int
-) : BaseAd(model, year){
+) : BaseAd(model, year, city){
 
     init {
         if (this.year >= 1980){
@@ -13,7 +14,7 @@ open class MotorcycleAd(
         }
     }
 
-    constructor(model: String) : this(model, 2021, 500){
+    constructor(model: String) : this(model, 2021, "Kokshetau",500, ){
         println("Вторичный конcтруктор MotorAd (model=$model, year=2021, engineVolume=500)")
     }
 

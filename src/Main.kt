@@ -64,10 +64,10 @@ fun main() {
     println("KolesaMini: OOП версия")
 
     val ads: Array<BaseAd?> = arrayOfNulls(5)
-    ads[0] = CarAd("Toyota", 1980, -100).apply { city = " " }
+    ads[0] = CarAd("Toyota", 1993, -100).apply { city = "Astana" }
     ads[1] = CarAd("Honda")
     (ads[1] as CarAd).price = 1_500_000
-    ads[2] = MotorcycleAd("Yamaha", 1975, 600)
+    ads[2] = MotorcycleAd("Yamaha", 1975, 600).apply { city = "Astana"}
     ads[3] = null
     ads[4] = MotorcycleAd("Ducati")
 

@@ -3,8 +3,8 @@ package src
 open class CarAd (
     model: String,
     year: Int,
-    var price: Int
-) : BaseAd(model, year) {
+    city: String
+) : BaseAd(model, year, city) {
 
     override var year: Int = super.year
         set(value) {
@@ -12,19 +12,26 @@ open class CarAd (
         }
 
     init {
-        if (price < 0){
-            println("CarAd init: цена < 0 => ставим 0.")
-            price = 0
-        }
+//        if (price < 0){
+//            println("CarAd init: цена < 0 => ставим 0.")
+//            price = 0
+//        }
         if (this.year < 1990){
             println("CarAd init: год < 1990 => ставим 1990.")
             this.year = 1990
         }
     }
 
-    constructor(model: String) : this(model, 2022, 0){
+    var price: Int = 25
+        set(value){
+            field = if (price > 20) value else 20
+        }
+
+    constructor(model: String, city: String) : this(model, 2022, city){
         println("Вторичный конcтруктор CarAd (model=$model, year=2022, price=0)")
     }
+
+
 
     override var city: String = super.city
         set(value) {
